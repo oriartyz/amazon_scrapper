@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Recherche produit</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@100&display=swap" rel="stylesheet">
+
+<style>
+    /* Centrer tout le contenu */
+    body {
+        text-align: center;
+    }
+
+    /* Styles pour les inputs */
+    input[type="text"],
+    input[type="number"] {
+        padding: 10px;
+        border-radius: 20px;
+        display: inline-block;
+        vertical-align: middle;
+        margin-bottom: 10px;
+        border: 2px solid lightblue;
+    }
+
+    input[type="submit"] {
+        padding: 10px 20px;
+        border-radius: 30px;
+        border: 2px solid lightblue;
+        background: linear-gradient(to right, lightblue, violet);
+        transition: 0.3s all ease-in-out;
+    }
+
+    input[type="submit"]:hover {
+        background: rgba(0, 0, 0, 0.2);
+        box-shadow: 0px 0px 10px 5px rgba(255, 255, 255, 0.85);
+    }
+
+    /* Alignement vertical des labels */
+    label {
+        display: inline-block;
+        vertical-align: middle;
+        margin-bottom: 10px;
+        width: 150px;
+    }
+
+      .container {
+      width: 500px;
+      height: 500px;
+      margin: 50px auto;
+      background: linear-gradient(to right, cyan, violet);
+      padding: 50px;
+      text-align: center;
+      border-radius: 10px;
+    }
+
+
+</style>
+
+
+</head>
+<body>
+    <div class="container">
+        <div>
+            <img src="{{ url_for('static', filename='logo.png') }}" alt="Logo" class="logo-img">
+            <h1>Recherche Produit</h1>
+            <form action="{{ url_for('results') }}" method="POST">
+                <label for="keyword">Mot Clé</label>
+                <input type="text" id="keyword" name="keyword">
+                <br><br>
+                <label for="num_pages">Nombre de page</label>
+                <input type="number" id="num_pages" name="num_pages">
+                <br><br>
+                <label for="min_price">Prix Min</label>
+                <input type="number" id="min_price" name="min_price">
+                <br><br>
+                <label for="max_price">Prix Max</label>
+                <input type="number" id="max_price" name="max_price">
+                <br><br>
+                <label for="filter_name">Filtre</label>
+                <input type="text" id="filter_name" name="filter_name">
+                <br><br>
+                <input type="submit" value="Search">
+            </form>
+            {% block content %}{% endblock %}
+        </div>
+  </div>
+</body>
+</html>
