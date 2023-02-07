@@ -1,4 +1,5 @@
 # amazon_scrapper
+
 This project consists in scrapping the data of a product on the Amazon site. It uses the Flask framework to build a simple user interface and Flask to send HTTP requests to the Amazon site. Scraped data includes product name, price, image and product description.
 
 Prerequisites
@@ -25,5 +26,9 @@ To install this project on your computer, follow these steps:
 
 4. Run the Python script to start the Flask application.
 
-Usage
-The user interface of the application is very simple to use. Just enter the product link on Amazon in the input field and click the search button. The scrapped data will be displayed in the results page.
+<br>
+<br>
+
+
+![alt text](static/maquette_amz.PNG)
+

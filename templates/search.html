@@ -9,83 +9,136 @@
     <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@100&display=swap" rel="stylesheet">
 
 <style>
-    /* Centrer tout le contenu */
-    body {
-        text-align: center;
-    }
 
-    /* Styles pour les inputs */
-    input[type="text"],
-    input[type="number"] {
-        padding: 10px;
-        border-radius: 20px;
-        display: inline-block;
-        vertical-align: middle;
-        margin-bottom: 10px;
-        border: 2px solid lightblue;
-    }
+  body {
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(to right, cyan, violet);
+    height: 80vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.container { /* container */
+    flex-shrink: 0;
+    background: #fff;
+    border-radius: 5px;
+}
+h1 {  /* h1*/
+    text-align: center;
+}
+.form-groupe {
+    position: relative;
+}
+label {
+    margin: 5px 23px;
+    font-size: 20px;
+    padding: 10px 0 5px 0;
+    display: block;
+    position: relative;
+}
+input {
+    display: block;
+    margin: 10px 20px 20px 20px;
+    outline: 0;
+    background: rgb(226,226,226);
+    width: 400px;
+    border: 0;
+    padding: 10px 12px;
+    border-radius: 3px;
+    font-size: 22px;
+    border: 1px solid rgba(0,0,0,0.3);
+}
 
-    input[type="submit"] {
-        padding: 10px 20px;
-        border-radius: 30px;
-        border: 2px solid lightblue;
-        background: linear-gradient(to right, lightblue, violet);
-        transition: 0.3s all ease-in-out;
-    }
-
-    input[type="submit"]:hover {
-        background: rgba(0, 0, 0, 0.2);
-        box-shadow: 0px 0px 10px 5px rgba(255, 255, 255, 0.85);
-    }
-
-    /* Alignement vertical des labels */
-    label {
-        display: inline-block;
-        vertical-align: middle;
-        margin-bottom: 10px;
-        width: 150px;
-    }
-
-      .container {
-      width: 500px;
-      height: 500px;
-      margin: 50px auto;
-      background: linear-gradient(to right, cyan, violet);
-      padding: 50px;
-      text-align: center;
-      border-radius: 10px;
-    }
-
+.icone-verif {
+    width: 30px;
+    position: absolute;
+    right: 27px;
+    top: 57px;
+    display: none;
+}
+.message-alerte {
+    margin: 0px 23px;
+    color: crimson;
+    display: none;
+}
+button {
+    display: block;
+    margin: 30px auto;
+    outline: 0;
+    background: rgb(250,165,9);
+    width: 90%;
+    border: 0;
+    padding: 15px;
+    border-radius: 3px;
+    font-size: 20px;
+    cursor: pointer;
+}
+button:hover {
+    background: rgb(252,181,49);
+}
+button:active {
+    background: rgb(250,165,9);
+}
+.ligne {
+    width: 80%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin: 0 auto;
+}
+.l1, .l2, .l3 {
+    width: 30%;
+    height: 5px;
+    margin: 15px 5px 20px;
+    position: relative;
+    display: none;
+}
+.l1 {
+    background: rgb(182,182,13);
+}
+.l2 {
+    background: rgb(151,85,85);
+}
+.l3 {
+    background: green;
+}
+.ligne span {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 10px;
+}
 
 </style>
 
 
 </head>
 <body>
-    <div class="container">
-        <div>
-            <img src="{{ url_for('static', filename='logo.png') }}" alt="Logo" class="logo-img">
-            <h1>Recherche Produit</h1>
-            <form action="{{ url_for('results') }}" method="POST">
-                <label for="keyword">Mot Clé</label>
-                <input type="text" id="keyword" name="keyword">
-                <br><br>
-                <label for="num_pages">Nombre de page</label>
-                <input type="number" id="num_pages" name="num_pages">
-                <br><br>
-                <label for="min_price">Prix Min</label>
-                <input type="number" id="min_price" name="min_price">
-                <br><br>
-                <label for="max_price">Prix Max</label>
-                <input type="number" id="max_price" name="max_price">
-                <br><br>
-                <label for="filter_name">Filtre</label>
-                <input type="text" id="filter_name" name="filter_name">
-                <br><br>
-                <input type="submit" value="Search">
-            </form>
-            {% block content %}{% endblock %}
+  <div class="container">
+    <img src="{{ url_for('static', filename='log.png') }}" alt="Logo" class="logo-img">
+    <h1>Recherche Produit </h1>
+    <form action="{{ url_for('results') }}" method="POST">
+        <div class="form-groupe">
+            <label for="keyword">Mot clé</label>
+            <input type="text" id="keyword"  name="keyword" placeholder="Mot clé" maxlength="24">
+
+            <label for="num_pages">Nombre de page</label>
+            <input type="number" id="num_pages" name = "num_pages" placeholder="Nombre de page">
+        
+            <label for="min_price">Prix Min</label>
+            <input type="number" id="min_price" name="min_price" placeholder="Prix Min">
+      
+            <label for="max_price">Prix Max</label>
+            <input type="number" id="max_price" name="max_price" placeholder="Prix max">
+            
+            <label for="filter_name">Filtre</label>
+            <input type="text" id="filter_name" name="filter_name" placeholder="Filtre">
         </div>
-  </div>
+        <button type="submit"  value="Search">Search</button>
+    </form>
+    {% block content %}{% endblock %}
+</div>
 </body>
 </html>
