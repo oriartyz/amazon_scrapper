@@ -29,6 +29,5 @@ To install this project on your computer, follow these steps:
 <br>
 <br>
 
-
 ![alt text](static/maquette_amz.PNG)
 
